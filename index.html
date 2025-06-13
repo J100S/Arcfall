@@ -2,146 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arcfall</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --electric-blue: #4AC1FF;
-      --antique-gold: #C8B273;
-      --obsidian-black: #1A1A1A;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background-color: var(--obsidian-black);
-      color: white;
-    }
-
-    /* Nav Bar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #111;
-      padding: 20px;
-    }
-
-    nav .logo {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 32px;
-      color: var(--electric-blue);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: var(--antique-gold);
-    }
-
-    header {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(145deg, var(--electric-blue), var(--antique-gold));
-      color: #000;
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 120px; /* 👈 CHANGE HEADER SIZE HERE */
-      margin: 0;
-      letter-spacing: 2px;
-    }
-
-    p.tagline {
-      font-size: 22px;
-      margin-top: 10px;
-    }
-
-    main {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .section {
-      margin-bottom: 50px;
-    }
-
-    .btn {
-      background-color: var(--electric-blue);
-      color: #000;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background-color: var(--antique-gold);
-    }
-
-    .learn-more-text {
-      display: none;
-      margin-top: 16px;
-      font-size: 14px;
-      background-color: #2a2a2a;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      color: #ddd;
-    }
-
-    footer {
-      padding: 20px;
-      text-align: center;
-      background-color: #111;
-      font-size: 14px;
-      color: #999;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 75px; /* 👈 CHANGE MOBILE HEADER SIZE HERE */
-      }
-
-      .btn {
-        padding: 12px 24px;
-        font-size: 16px;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <script src="scripts.js" defer></script>
 </head>
 <body>
 
@@ -159,37 +24,29 @@
   <!-- Header -->
   <header>
     <h1>Arcfall</h1>
-    <p class="tagline">A Biblical adventure Awaits</p>
+    <p class="tagline">A Biblical Adventure Awaits</p>
   </header>
 
-  <!-- Main -->
+  <!-- Main Content -->
   <main>
-    <div class="section">
+    <section class="section">
       <h2>Season 1: The Ark Awakens</h2>
       <p>Explore the mysteries of the island, uncover the lost Arc Engine, and prepare for anything.</p>
-      <a class="btn" href="https://youtube.com/@arcfall_yt?si=kMsHjd5q6om5ne-8" target="_blank">Visit YouTube</a>
-    </div>
+      <a class="btn" href="https://youtube.com/@arcfall_yt?si=kMsHjd5q6om5ne-8" target="_blank" rel="noopener noreferrer">Visit YouTube</a>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <button class="btn" onclick="toggleLearnMore()">Learn More</button>
-      <div id="learnMoreText" class="learn-more-text">
-        Arcfall is a fast-paced third-person shooter. Set in a world touched by the lost Arc Engine. Each season is inspired by a different biblical story and race to control the world-altering Arc Engine—a device capable of bending reality itself.
+      <div id="learnMoreText" class="learn-more-text" style="display: none;">
+        Arcfall is a fast-paced third-person shooter set in a world touched by the lost Arc Engine. Each season is inspired by a different biblical story and features a race to control the world-altering Arc Engine—a device capable of bending reality itself.
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Footer -->
   <footer>
     &copy; 2025 Daa Games. All rights reserved.
   </footer>
-
-  <!-- Script -->
-  <script>
-    function toggleLearnMore() {
-      const info = document.getElementById("learnMoreText");
-      info.style.display = info.style.display === "block" ? "none" : "block";
-    }
-  </script>
 
 </body>
 </html>
