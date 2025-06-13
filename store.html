@@ -2,107 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arcfall Merch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --electric-blue: #4AC1FF;
+      --antique-gold: #C8B273;
+      --obsidian-black: #1A1A1A;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #1A1A1A;
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--obsidian-black);
       color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #111;
+      display: flex;
+      justify-content: space-between;
       padding: 20px;
     }
-    .product {
-      background: #222;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-      max-width: 400px;
+
+    .logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      color: var(--electric-blue);
     }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: var(--antique-gold);
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(145deg, var(--electric-blue), var(--antique-gold));
+      color: #000;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 80px;
+      margin: 0;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .product {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
     .product img {
       max-width: 100%;
-      border-radius: 6px;
+      border-radius: 10px;
     }
+
     .product h3 {
-      margin: 10px 0 5px;
-      color: #4AC1FF;
+      color: var(--electric-blue);
+      margin: 15px 0 10px;
     }
+
     .product p {
-      margin: 5px 0;
+      color: #ccc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #888;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Arcfall Merch</h1>
-  <div id="products">Loading products...</div>
+  <nav>
+    <div class="logo">Arcfall</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="seasons.html">Seasons</a></li>
+      <li><a href="store.html">Merch</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Arcfall Merch</h1>
+    <p>Support the mission. Look good doing it.</p>
+  </header>
+
+  <div class="products" id="products">
+    <!-- Products will be loaded here -->
+  </div>
+
+  <footer>
+    &copy; 2025 Daa Games. All rights reserved.
+  </footer>
 
   <script>
-    const apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzN2Q0YmQzMDM1ZmUxMWU5YTgwM2FiN2VlYjNjY2M5NyIsImp0aSI6ImM3MGFmZTE3ZWE4ZTM3ZTM0MTgzYmMwZjNmYWMxZmM0YmNmMGNkY2U4N2M0YmJiYmZmZWU0NmU0MzU2OGNjNmVlYjcyN2Y2NzYxZjE0MjM3IiwiaWF0IjoxNzQ5NzgwODA2LjcxNjgwNCwibmJmIjoxNzQ5NzgwODA2LjcxNjgwNiwiZXhwIjoxNzgxMzE2ODA2LjY5NTMxNiwic3ViIjoiMTkwNTc5OTEiLCJzY29wZXMiOlsic2hvcHMubWFuYWdlIiwic2hvcHMucmVhZCIsImNhdGFsb2cucmVhZCIsIm9yZGVycy5yZWFkIiwib3JkZXJzLndyaXRlIiwicHJvZHVjdHMucmVhZCIsInByb2R1Y3RzLndyaXRlIiwid2ViaG9va3MucmVhZCIsIndlYmhvb2tzLndyaXRlIiwidXBsb2Fkcy5yZWFkIiwidXBsb2Fkcy53cml0ZSIsInByaW50X3Byb3ZpZGVycy5yZWFkIiwidXNlci5pbmZvIl19.JjRINeTeYQCgj68Nbx9Hvt-6_W8fsXmNTrhGvcJxUOrInHIeV5fpUje5pbPiFCkG9aIOPWQdwbSFtstxaEhqnDhV8308iBmnvjPV4GVyVHJG9iWK16DxCN9nQj0w_LVujiDM9hnSn6e6k2Pd0s6wzG6-KLPjTRzgj9WvoNzOGLcbERd99V2gxw2mz8BCChnojCRRlSRl5qtr1zv0TyF7xRRTEIWWK8tfM8ExtapQWffLNwEF4oJLPS1jY2oZ3dBz5qkKDad-0Gw3sczV8NKw6eNRBg8QRsQt2qhq3pxgEWTdtm-w6Gia70utlM-td_4TEfLQz1xVAAX2Fm2phllenUpvy0zNm9L5Tz7jCTDIi4Uc_Q6lz1LZ1b-XIPoVm_FS60ftFIeuTV8RYw-ibdkF7bv0uTfTcow_G9Mp7XyAucuDhcDXsDNX_UYFXP74pum3TU5m5NSCnLPvHlbtFgFyknKZsN2-fjN2HkHikK-WIWnmLgQiFPz0J8lxeFlOsVdrLN6F_8PeAF_vDq2FrfoRe7tNaWXH6JCH-siRmpejLc2oqJXssOSxxNt57BR-8VijBY6lLaNlHiiXhL7yFidG3b-fOjTu9KHC0rvRiRSJvlRatuC9ZT402MfG2-6M_Enn5PRParXEJDnkzgHz4e_hqm1dLC2T6tn2NiFynmTrPkQ';
-
-    async function fetchProducts() {
-      try {
-        const res = await fetch('https://api.printify.com/v1/shops.json', {
-          headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
-          }
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('products');
+        data.forEach(product => {
+          const div = document.createElement('div');
+          div.className = 'product';
+          div.innerHTML = `
+            <img src="${product.image}" alt="${product.title}">
+            <h3>${product.title}</h3>
+            <p>${product.description || 'Awesome merch just for you!'}</p>
+          `;
+          container.appendChild(div);
         });
-        if (!res.ok) throw new Error('Network response was not ok');
-        const shops = await res.json();
-        const shopId = shops[0]?.id;
-        if (!shopId) {
-          document.getElementById('products').textContent = 'No shops found.';
-          return;
-        }
-
-        const productsRes = await fetch(`https://api.printify.com/v1/shops/${shopId}/products.json`, {
-          headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        });
-
-        if (!productsRes.ok) throw new Error('Failed to fetch products');
-
-        const productsData = await productsRes.json();
-        displayProducts(productsData.data);
-      } catch (err) {
-        document.getElementById('products').textContent = 'Error loading products: ' + err.message;
-      }
-    }
-
-    function displayProducts(products) {
-      const container = document.getElementById('products');
-      container.innerHTML = '';
-
-      if (!products || products.length === 0) {
-        container.textContent = 'No products available.';
-        return;
-      }
-
-      products.forEach(product => {
-        const div = document.createElement('div');
-        div.className = 'product';
-
-        const img = document.createElement('img');
-        img.src = product.images?.[0]?.src || '';
-        img.alt = product.title;
-
-        const title = document.createElement('h3');
-        title.textContent = product.title;
-
-        const description = document.createElement('p');
-        description.textContent = product.description || '';
-
-        div.appendChild(img);
-        div.appendChild(title);
-        div.appendChild(description);
-
-        container.appendChild(div);
+      })
+      .catch(err => {
+        document.getElementById('products').innerHTML = `<p style="color: red;">Failed to load products. Please try again later.</p>`;
+        console.error(err);
       });
-    }
-
-    fetchProducts();
   </script>
 
 </body>
