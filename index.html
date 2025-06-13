@@ -19,6 +19,40 @@
       color: white;
     }
 
+    /* Nav Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      padding: 20px;
+    }
+
+    nav .logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      color: var(--electric-blue);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--antique-gold);
+    }
+
     header {
       padding: 60px 20px;
       text-align: center;
@@ -36,24 +70,6 @@
     p.tagline {
       font-size: 22px;
       margin-top: 10px;
-    }
-
-    nav {
-      background-color: #111;
-      padding: 10px 0;
-      text-align: center;
-    }
-
-    .nav-btn {
-      color: var(--electric-blue);
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .nav-btn:hover {
-      color: var(--antique-gold);
     }
 
     main {
@@ -114,15 +130,22 @@
         font-size: 16px;
       }
 
-      .nav-btn {
-        display: block;
-        margin: 10px 0;
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
   <nav>
     <div class="logo">Arcfall</div>
     <ul>
@@ -132,18 +155,14 @@
       <li><a href="community.html">Community</a></li>
     </ul>
   </nav>
-  
+
+  <!-- Header -->
   <header>
     <h1>Arcfall</h1>
     <p class="tagline">A Biblical adventure Awaits</p>
   </header>
 
-  <nav>
-    <a href="index.html" class="nav-btn">Home</a>
-    <a href="seasons.html" class="nav-btn">Seasons</a>
-    <a href="community.html" class="nav-btn">Community</a>
-  </nav>
-
+  <!-- Main -->
   <main>
     <div class="section">
       <h2>Season 1: The Ark Awakens</h2>
@@ -159,10 +178,12 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 Daa Games. All rights reserved.
   </footer>
 
+  <!-- Script -->
   <script>
     function toggleLearnMore() {
       const info = document.getElementById("learnMoreText");
