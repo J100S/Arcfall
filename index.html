@@ -65,6 +65,19 @@
       background-color: var(--antique-gold);
     }
 
+    .learn-more-text {
+      display: none;
+      margin-top: 20px;
+      font-size: 16px;
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #ddd;
+    }
+
     footer {
       padding: 20px;
       text-align: center;
@@ -75,7 +88,7 @@
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 75px; /* 👈 Mobile header size */
+        font-size: 75px; 👈 CHANGE MOBILE HEADER SIZE HERE */
       }
 
       .btn {
@@ -89,23 +102,40 @@
 
   <header>
     <h1>Arcfall</h1>
-    <p class="tagline">A Biblical Adventure Awaits</p>
+    <p class="tagline">A Biblical adventure Awaits</p>
   </header>
 
   <main>
     <div class="section">
       <h2>Season 1: The Ark Awakens</h2>
-      <p>Explore the mysteries of the island, uncover the lost Arc Engine, and prepare for anything.</p>
-      <a class="btn" href="https://youtube.com/@arcfall_yt?si=kMsHjd5q6om5ne-8" target="_blank">Visit Youtube</a>
+      <p>Explore the mysteries of the island, uncover lost technology, and prepare for the flood.</p>
+      <a class="btn" href="https://youtube.com/@arcfall_yt?si=kMsHjd5q6om5ne-8" target="_blank">Watch Trailer</a>
     </div>
 
     <div class="section">
-      <h2>Coming soon</h2>
+      <h2>Coming to PC & Console</h2>
+      <p>Follow our journey as we bring Arcfall to life.</p>
+      <a class="btn" href="#">Join the Community</a>
+    </div>
+
+    <div class="section">
+      <button class="btn" onclick="toggleLearnMore()">Learn More</button>
+      <div id="learnMoreText" class="learn-more-text">
+        Arcfall is a fast-paced third-person shooter. Set in a world touched by the lost Arc Engine. Each season is inspired by a different biblical story and race to control the world-altering Arc Engine—a device capable of bending reality itself.
+      </div>
+    </div>
   </main>
 
   <footer>
     &copy; 2025 Daa Games. All rights reserved.
   </footer>
+
+  <script>
+    function toggleLearnMore() {
+      const info = document.getElementById("learnMoreText");
+      info.style.display = info.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
