@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arcfall Merch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1A1A1A;
+      color: white;
+      padding: 20px;
+    }
+    .product {
+      background: #222;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
+    .product img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+    .product h3 {
+      margin: 10px 0 5px;
+      color: #4AC1FF;
+    }
+    .product p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Arcfall Merch</h1>
+  <div id="products">Loading products...</div>
+
+  <script>
+    const apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzN2Q0YmQzMDM1ZmUxMWU5YTgwM2FiN2VlYjNjY2M5NyIsImp0aSI6ImM3MGFmZTE3ZWE4ZTM3ZTM0MTgzYmMwZjNmYWMxZmM0YmNmMGNkY2U4N2M0YmJiYmZmZWU0NmU0MzU2OGNjNmVlYjcyN2Y2NzYxZjE0MjM3IiwiaWF0IjoxNzQ5NzgwODA2LjcxNjgwNCwibmJmIjoxNzQ5NzgwODA2LjcxNjgwNiwiZXhwIjoxNzgxMzE2ODA2LjY5NTMxNiwic3ViIjoiMTkwNTc5OTEiLCJzY29wZXMiOlsic2hvcHMubWFuYWdlIiwic2hvcHMucmVhZCIsImNhdGFsb2cucmVhZCIsIm9yZGVycy5yZWFkIiwib3JkZXJzLndyaXRlIiwicHJvZHVjdHMucmVhZCIsInByb2R1Y3RzLndyaXRlIiwid2ViaG9va3MucmVhZCIsIndlYmhvb2tzLndyaXRlIiwidXBsb2Fkcy5yZWFkIiwidXBsb2Fkcy53cml0ZSIsInByaW50X3Byb3ZpZGVycy5yZWFkIiwidXNlci5pbmZvIl19.JjRINeTeYQCgj68Nbx9Hvt-6_W8fsXmNTrhGvcJxUOrInHIeV5fpUje5pbPiFCkG9aIOPWQdwbSFtstxaEhqnDhV8308iBmnvjPV4GVyVHJG9iWK16DxCN9nQj0w_LVujiDM9hnSn6e6k2Pd0s6wzG6-KLPjTRzgj9WvoNzOGLcbERd99V2gxw2mz8BCChnojCRRlSRl5qtr1zv0TyF7xRRTEIWWK8tfM8ExtapQWffLNwEF4oJLPS1jY2oZ3dBz5qkKDad-0Gw3sczV8NKw6eNRBg8QRsQt2qhq3pxgEWTdtm-w6Gia70utlM-td_4TEfLQz1xVAAX2Fm2phllenUpvy0zNm9L5Tz7jCTDIi4Uc_Q6lz1LZ1b-XIPoVm_FS60ftFIeuTV8RYw-ibdkF7bv0uTfTcow_G9Mp7XyAucuDhcDXsDNX_UYFXP74pum3TU5m5NSCnLPvHlbtFgFyknKZsN2-fjN2HkHikK-WIWnmLgQiFPz0J8lxeFlOsVdrLN6F_8PeAF_vDq2FrfoRe7tNaWXH6JCH-siRmpejLc2oqJXssOSxxNt57BR-8VijBY6lLaNlHiiXhL7yFidG3b-fOjTu9KHC0rvRiRSJvlRatuC9ZT402MfG2-6M_Enn5PRParXEJDnkzgHz4e_hqm1dLC2T6tn2NiFynmTrPkQ';
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch('https://api.printify.com/v1/shops.json', {
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        if (!res.ok) throw new Error('Network response was not ok');
+        const shops = await res.json();
+        const shopId = shops[0]?.id;
+        if (!shopId) {
+          document.getElementById('products').textContent = 'No shops found.';
+          return;
+        }
+
+        const productsRes = await fetch(`https://api.printify.com/v1/shops/${shopId}/products.json`, {
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!productsRes.ok) throw new Error('Failed to fetch products');
+
+        const productsData = await productsRes.json();
+        displayProducts(productsData.data);
+      } catch (err) {
+        document.getElementById('products').textContent = 'Error loading products: ' + err.message;
+      }
+    }
+
+    function displayProducts(products) {
+      const container = document.getElementById('products');
+      container.innerHTML = '';
+
+      if (!products || products.length === 0) {
+        container.textContent = 'No products available.';
+        return;
+      }
+
+      products.forEach(product => {
+        const div = document.createElement('div');
+        div.className = 'product';
+
+        const img = document.createElement('img');
+        img.src = product.images?.[0]?.src || '';
+        img.alt = product.title;
+
+        const title = document.createElement('h3');
+        title.textContent = product.title;
+
+        const description = document.createElement('p');
+        description.textContent = product.description || '';
+
+        div.appendChild(img);
+        div.appendChild(title);
+        div.appendChild(description);
+
+        container.appendChild(div);
+      });
+    }
+
+    fetchProducts();
+  </script>
+
+</body>
+</html>
